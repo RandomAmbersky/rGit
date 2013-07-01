@@ -15,13 +15,18 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     
-private slots:
+public slots:
     void on_actionExit_triggered();
 
     void on_actionOpen_triggered();
 
 private:
     Ui::MainWindow *ui;
+
+    void showLog();
+
+    QString _dir; // директория с .git
+
 };
 
 #endif // MAINWINDOW_H
