@@ -24,6 +24,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionOpen_triggered()
 {
+
     _dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
                                                      ".",
                                                      QFileDialog::ShowDirsOnly
@@ -41,8 +42,9 @@ void MainWindow::showLog()
     QProcess log;
     log.setWorkingDirectory( _dir );
     qDebug() << "working dir:" << log.workingDirectory();
-    //TODO ограничение в 10 коммитов!
+
     log.start("git", QStringList() << "log" << "--oneline" << "--abbrev-commit" << "--all" << "--decorate=full" << /*"-n 10" <<*/ "--children" );
+
     if (!log.waitForStarted()) return;
 
     //log.write("Qt rocks!");
